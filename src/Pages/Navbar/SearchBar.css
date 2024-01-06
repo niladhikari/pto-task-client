@@ -1,0 +1,18 @@
+.search-container {
+    position: relative;
+  }
+  
+  .search-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none; /* Allows clicking through the icon */
+  }
+  
+  /* Adjust the icon size as needed */
+  .search-icon svg {
+    width: 1.5em;
+    height: 1.5em;
+  }
+  
