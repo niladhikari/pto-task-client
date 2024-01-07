@@ -7,10 +7,6 @@ import RecommendedItems from "./RecommendedItems";
 
 const Home = () => {
  
-
-  // const recommendedItems = item.filter((item) => item.IsRecommended);
-
-
   return (
     <div>
       <div className="mt-20 lg:bg-orange-300 rounded-2xl mb-10">
@@ -32,9 +28,7 @@ const Home = () => {
       <PopularItems></PopularItems>
       </div>
       <div>
-        {/* {recommendedItems.map((item) => (
-          <RecommendedItems key={item.Id} item={item}></RecommendedItems>
-        ))} */}
+       <RecommendedItems></RecommendedItems>
       </div>
     </div>
   );

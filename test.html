@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Task Management App</title>
+  <!-- Include CSS styles for the popup -->
+  <style>
+    /* Styling for the popup */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #f9f9f9;
+      padding: 20px;
+      border: 1px solid #ccc;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Button to open the popup -->
+<button onclick="openPopup()">Add New Card</button>
+
+<!-- Popup for adding new cards -->
+<div id="popup" class="popup">
+  <h2>Add New Card</h2>
+  <form id="cardForm">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" required><br><br>
+    <label for="description">Description:</label><br>
+    <textarea id="description" name="description" rows="4" cols="30"></textarea><br><br>
+    <!-- Other fields for additional card information can be added here -->
+    <input type="submit" value="Add Card">
+  </form>
+  <button onclick="closePopup()">Close</button>
+</div>
+
+<script>
+  // Function to open the popup
+  function openPopup() {
+    document.getElementById('popup').style.display = 'block';
+  }
+
+  // Function to close the popup
+  function closePopup() {
+    document.getElementById('popup').style.display = 'none';
+  }
+
+  // Handle form submission (add card functionality)
+  document.getElementById('cardForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission (page refresh)
+    
+    // Get form values
+    const title = document.getElementById('title').value;
+    const description = document.getElementById('description').value;
+    
+    // Perform actions with the form data (e.g., add the card to the system)
+    console.log('New Card Added - Title: ' + title + ', Description: ' + description);
+    
+    // Close the popup after adding the card (you can modify this behavior)
+    closePopup();
+  });
+</script>
+
+</body>
+</html>
