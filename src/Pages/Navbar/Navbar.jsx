@@ -1,8 +1,20 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { RxAvatar } from "react-icons/rx";
 
-import './SearchBar.css';
+import "./SearchBar.css";
+import useAuth from "../../Hook/useAuth";
 
 const Navbar = () => {
+  const { user, userSignOut } = useAuth();
+  const handleLogout = () => {
+    userSignOut()
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
   const links = (
     <>
       <>
@@ -10,18 +22,22 @@ const Navbar = () => {
           <NavLink to={"/"}>Home</NavLink>
         </li>
         <li>
-          <NavLink to={"/menu"}>Our Menu</NavLink>
+          <NavLink to={"/menu"}>Category</NavLink>
         </li>
         <li>
-          <NavLink to={"/order/salad"}>Order Food</NavLink>
+          {user ? (
+            <button onClick={handleLogout}>Logout</button>
+          ) : (
+            <NavLink to={"/login"}>Login</NavLink>
+          )}
         </li>
       </>
     </>
   );
   return (
     <div className="navbar bg-base-100 ">
-      <div className="navbar">
-        <a className="btn btn-ghost text-xl">pti.</a>
+      <div className="navbar-start">
+        <a className="btn btn-ghost lg:text-3xl font-mono">pti.</a>
       </div>
 
       <div className="search-container">
@@ -48,10 +64,49 @@ const Navbar = () => {
           <li>
             <details>
               <summary>Menu</summary>
-              <ul className="p-2">{links}</ul>
+              <ul className="p-2 z-40">{links}</ul>
             </details>
           </li>
         </ul>
+      </div>
+      <div className="lg:w-2/4  lg:justify-end hidden lg:flex">
+        {user?.email ? (
+          <div className="dropdown dropdown-end">
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full">
+                <img
+                  className="bg-slate-500"
+                  src={user.photoURL}
+                  alt={user.displayName}
+                />
+              </div>
+            </label>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content mt-3 z-[100] p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <button className="btn btn-sm  btn-ghost">
+                  {user.displayName}
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={handleLogout}
+                  className="btn btn-sm  btn-ghost font-bold text-red-500"
+                >
+                  Logout
+                </button>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          <Link to="/login">
+            <button className="btn bg-orange-300 text-center font-bold text-green-800">
+              <RxAvatar className="text-3xl" />
+            </button>
+          </Link>
+        )}
       </div>
     </div>
   );
