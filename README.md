@@ -1,8 +1,8 @@
-# React + Vite
+# [Live Link](https://delicate-parfait-f2f4c1.netlify.app/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ 
+- Homepage: It's like the front door. After that, there are two sections called "Popular Items" and "Recommended Items." These parts show you different things to eat that lots of people like or that we suggest.
+- Add Item: You can put in your own favorite food by clicking this button. It will show a small box where you can type in what you want to add and some info about it.
+- Sign in and out: If you want, you can log in using your Google account or make a new account. When you're done, you can log out.
+ 
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
